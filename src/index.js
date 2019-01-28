@@ -1,12 +1,25 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import {render} from 'react-dom';
+import Header from "./Header";
+import Author from "./Author";
+import Page from "./Page";
+import LSworker from "./LSworker";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+LSworker.initStore();
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const author = {
+    firstName: 'Nina',
+    secondName: 'Kuklina'
+};
+
+function MainContent() {
+    return (
+        <div>
+            <Header/>
+            <Author params={author}/>
+            <Page/>
+        </div>
+    )
+}
+
+render(<MainContent/>, document.getElementById('root'));
